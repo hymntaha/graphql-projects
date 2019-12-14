@@ -29,6 +29,6 @@ const server = new ApolloServer({
 
 server.applyMiddleware({app})
 
-app.list(3333, () =>
+app.listen(3333, () =>
   console.info("Apollo GraphQL server is running on port 3333")
 );
