@@ -9,8 +9,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(id: ID!): User
-		cars:[Car]
-		car(id: ID!): Car
+    cars: [Car]
+    car(id: ID!): Car
     me: User
   }
 
@@ -24,7 +24,7 @@ const typeDefs = gql`
     make: String!
     model: String!
     color: String!
-		owner: User!
+    owner: User!
   }
 `;
 
@@ -35,12 +35,15 @@ const resolvers = {
       const user = users.filter(user => user.id === id);
       return user[0];
     },
-		cars: () => cars,
-		car: (parent, { id }) => {
-			const car = cars.filter(car => car.id === id);
-			return car[0];
-		},
+    cars: () => cars,
+    car: (parent, { id }) => {
+      const car = cars.filter(car => car.id === id);
+      return car[0];
+    },
     me: () => me
+  },
+  Car: {
+    owner: parent => users[parent.ownedBy - 1]
   }
 };
 
