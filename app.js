@@ -17,7 +17,11 @@ const typeDefs = gql`
 	type Mutation {
 		makeUser(id: Int!, name:String!): User!
 		removeUser(id:Int!): Boolean
+		createCar(id: Int!, make: String!, model:String!, color: String!):Car!
+		removeCar(id:Int!): Boolean
+		
 	}
+		
 
   type User {
     id: ID!
@@ -70,6 +74,29 @@ const resolvers = {
   			return true;
 			} else{
   			return false;
+			}
+		},
+		createCar: (parent, {id,make, model, color})=> {
+			const user = {
+				id,
+				name
+			};
+			users.push(user);
+			return user;
+		},
+		removeUser: (parent,{id}) => {
+			let found = false;
+			users.filter(user=>{
+				if (user.id === id) {
+					found =true;
+				} else{
+					return user;
+				}
+			});
+			if(found){
+				return true;
+			} else{
+				return false;
 			}
 		}
 	},
