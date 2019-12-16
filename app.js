@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const { ApolloServer, gql } = require("apollo-server-express");
-const users = require("./data").users;
+let users = require("./data").users;
 const cars = require("./data").cars;
 const me = users[0];
 
