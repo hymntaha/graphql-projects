@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const { ApolloServer, gql } = require("apollo-server-express");
 let users = require("./data").users;
-const cars = require("./data").cars;
+let cars = require("./data").cars;
 const me = users[0];
 
 const typeDefs = gql`
@@ -77,20 +77,22 @@ const resolvers = {
 			}
 		},
 		createCar: (parent, {id,make, model, color})=> {
-			const user = {
+			const car = {
 				id,
-				name
+				make,
+				model,
+				color
 			};
-			users.push(user);
-			return user;
+			cars.push(car);
+			return car;
 		},
-		removeUser: (parent,{id}) => {
+		removeCar: (parent,{id}) => {
 			let found = false;
-			users.filter(user=>{
-				if (user.id === id) {
+			cars.filter(car=>{
+				if (car.id === id) {
 					found =true;
 				} else{
-					return user;
+					return car;
 				}
 			});
 			if(found){
