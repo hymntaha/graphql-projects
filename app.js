@@ -24,6 +24,7 @@ const typeDefs = gql`
     make: String!
     model: String!
     color: String!
+		owner: User!
   }
 `;
 

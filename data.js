@@ -18,22 +18,26 @@ let cars = [
     id: 1,
     make: "Ford",
     model: "Focus",
-    color: "red"
+    color: "red",
+    ownedBy: 1
   },
   {
     id: 2,
     make: "Mercedes",
     model: "C300",
-    color: "white"
+    color: "white",
+    ownedBy: 1
   },
   {
     id: 3,
     make: "Tesla",
     model: "Cybertruck",
-    color: "silver"
+    color: "silver",
+    ownedBy: 3
   }
 ];
 
 module.exports = {
-  users, cars
+  users,
+  cars
 };
