@@ -4,6 +4,12 @@ const user = (sequelize, DataTypes) =>{
       type: DataTypes.STRING
     }
   })
+
+  User.associate = models=>{
+    User.hasMany(models.Car, {onDelete: 'CASCADE'}) //1->Many
+    // DELETE CASCADE
+  }
+
   return User
 }
 
