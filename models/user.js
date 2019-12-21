@@ -4,6 +4,7 @@ const user = (sequelize, DataTypes) =>{
       type: DataTypes.STRING
     }
   })
+  return User
 }
 
 module.exports = user;
