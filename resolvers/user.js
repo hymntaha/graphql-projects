@@ -32,7 +32,7 @@ const resolvers = {
       }
     },
   User: {
-    car: parent => parent.cars.map(carId => cars[carId - 1])
+    car: (parent,args, {models}) => parent.cars.map(carId => models.cars[carId - 1])
   }
 };
 
