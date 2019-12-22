@@ -1,20 +1,19 @@
 const resolvers = {
   Query: {
-    users: (parent,args, {models}) => models.users,
-    user: (parent, { id },{models}) => {
-      const user = models.users.filter(user => user.id === id);
-      return user[0];
+    users: (parent,args, {models}) => {
+      return models.User.findAll();
     },
-    me: (parent, args, {me}) => me
+    user: (parent, { id },{models}) => {
+      return models.User.findByPk(id);
+    },
+    // me: (parent, args, {me}) => me
   },
   Mutation: {
     makeUser: (parent, { id, name },{models}) => {
       const user = {
-        id,
         name
       };
-      models.users.push(user);
-      return user;
+      return models.User.create(user);
     },
     removeUser: (parent, { id },{models}) => {
       let found = false;
